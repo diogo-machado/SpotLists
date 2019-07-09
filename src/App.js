@@ -1,25 +1,85 @@
 import React, { Component } from 'react';
 // import logo from './logo.svg';
-import Aggregate from './components/Aggregate/Aggregate';
+import PlaylistCounter from './components/PlaylistCounter/PlaylistCounter';
+import HoursCounter from './components/HoursCounter/HoursCounter';
 import Filter from './components/Filter/Filter';
 import Playlist from './components/Playlist/Playlist';
 import './App.css';
 
+let fakeServerData = {
+  user: {
+    name: 'David',
+    playlists: [
+      {
+        name: 'My favorites',
+        songs: [
+          { name: 'Beat It', duration: 1345 },
+          { name: 'Cannelloni Makaroni', duration: 1236 },
+          { name: 'Rosa helikopter', duration: 70000 }
+        ]
+      },
+      {
+        name: 'Discover Weekly',
+        songs: [
+          { name: 'Beat It', duration: 1345 },
+          { name: 'Cannelloni Makaroni', duration: 1236 },
+          { name: 'Rosa helikopter', duration: 70000 }
+        ]
+      },
+      {
+        name: 'Another playlist - the best!',
+        songs: [
+          { name: 'Beat It', duration: 1345 },
+          { name: 'Cannelloni Makaroni', duration: 1236 },
+          { name: 'Rosa helikopter', duration: 70000 }
+        ]
+      },
+      {
+        name: 'Playlist - yeah!',
+        songs: [
+          { name: 'Beat It', duration: 1345 },
+          { name: 'Cannelloni Makaroni', duration: 1236 },
+          { name: 'Rosa helikopter', duration: 70000 }
+        ]
+      }
+    ]
+  }
+};
+
 class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      serverData: {}
+    };
+  }
+
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({ serverData: fakeServerData });
+    }, 1000);
+  }
+
   render() {
-    let name = 'David';
-    let green = '#FF1212';
-    let headerStyle = { color: green, 'font-size': '50px' };
     return (
       <div className="App">
-        <h1>Title</h1>
-        <Aggregate />
-        <Aggregate />
-        <Filter />
-        <Playlist />
-        <Playlist />
-        <Playlist />
-        <Playlist />
+        {this.state.serverData.user ? (
+          <div>
+            <h1>{this.state.serverData.user && this.state.serverData.user.name}'s Playlist</h1>
+            <PlaylistCounter
+              playlist={this.state.serverData.user && this.state.serverData.user.playlists}
+            />
+            <HoursCounter playlists={this.state.serverData.user.playlists} />
+            <Filter />
+            <Playlist />
+            <Playlist />
+            <Playlist />
+            <Playlist />
+          </div>
+        ) : (
+          <h1>Loading...</h1>
+        )}
       </div>
     );
   }
