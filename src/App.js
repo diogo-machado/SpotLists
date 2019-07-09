@@ -15,14 +15,14 @@ let fakeServerData = {
         songs: [
           { name: 'Beat It', duration: 1345 },
           { name: 'Cannelloni Makaroni', duration: 1236 },
-          { name: 'Rosa helikopter', duration: 70000 }
+          { name: 'Loved to death', duration: 70000 }
         ]
       },
       {
         name: 'Discover Weekly',
         songs: [
           { name: 'Beat It', duration: 1345 },
-          { name: 'Cannelloni Makaroni', duration: 1236 },
+          { name: 'Bad Boys', duration: 1236 },
           { name: 'Rosa helikopter', duration: 70000 }
         ]
       },
@@ -31,13 +31,13 @@ let fakeServerData = {
         songs: [
           { name: 'Beat It', duration: 1345 },
           { name: 'Cannelloni Makaroni', duration: 1236 },
-          { name: 'Rosa helikopter', duration: 70000 }
+          { name: 'Jukebox Hero', duration: 70000 }
         ]
       },
       {
         name: 'Playlist - yeah!',
         songs: [
-          { name: 'Beat It', duration: 1345 },
+          { name: 'Vampires', duration: 1345 },
           { name: 'Cannelloni Makaroni', duration: 1236 },
           { name: 'Rosa helikopter', duration: 70000 }
         ]
@@ -72,10 +72,9 @@ class App extends Component {
             />
             <HoursCounter playlists={this.state.serverData.user.playlists} />
             <Filter />
-            <Playlist />
-            <Playlist />
-            <Playlist />
-            <Playlist />
+            {this.state.serverData.user.playlists.map(playlist => (
+              <Playlist playlist={playlist} />
+            ))}
           </div>
         ) : (
           <h1>Loading...</h1>
