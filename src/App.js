@@ -51,7 +51,8 @@ class App extends Component {
     super(props);
 
     this.state = {
-      serverData: {}
+      serverData: {},
+      filterString: ''
     };
   }
 
@@ -62,6 +63,11 @@ class App extends Component {
   }
 
   render() {
+    let playlistsToRender = this.state.serverData.user
+      ? this.state.serverData.user.playlists.filter(playlist =>
+          playlist.name.toLowerCase().includes(this.state.filterString.toLowerCase())
+        )
+      : [];
     return (
       <div className="App">
         {this.state.serverData.user ? (
@@ -70,10 +76,10 @@ class App extends Component {
             <PlaylistCounter
               playlist={this.state.serverData.user && this.state.serverData.user.playlists}
             />
-            <HoursCounter playlists={this.state.serverData.user.playlists} />
-            <Filter />
-            {this.state.serverData.user.playlists.map(playlist => (
-              <Playlist playlist={playlist} />
+            <HoursCounter playlists={playlistsToRender} />
+            <Filter onTextChange={text => this.setState({ filterString: text })} />
+            {playlistsToRender.map((playlist, index) => (
+              <Playlist key={index} playlist={playlist} />
             ))}
           </div>
         ) : (

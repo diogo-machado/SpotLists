@@ -8,8 +8,8 @@ export default class Playlist extends Component {
         <img src="" alt="" />
         <h3>{playlist.name}</h3>
         <ul>
-          {playlist.songs.map(song => {
-            return <li>{song.name}</li>;
+          {playlist.songs.map((song, index) => {
+            return <li key={index}>{song.name}</li>;
           })}
         </ul>
       </div>

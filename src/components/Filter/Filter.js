@@ -5,7 +5,7 @@ export default class Filter extends Component {
     return (
       <div>
         <img src="" alt="" />
-        <input type="text" />
+        <input type="text" onChange={e => this.props.onTextChange(e.target.value)} />
       </div>
     );
   }
