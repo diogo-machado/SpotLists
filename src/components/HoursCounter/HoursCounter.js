@@ -10,7 +10,11 @@ export default class HoursCounter extends Component {
     }, 0);
     return (
       <div>
-        <h2>{Math.round(totalDuration / 3600)} hours</h2>
+        {Math.round(totalDuration / 3600) < 1 ? (
+          <h2>{Math.round(totalDuration / 60)} Minutes</h2>
+        ) : (
+          <h2>{Math.round(totalDuration / 3600)} Hours</h2>
+        )}
       </div>
     );
   }
