@@ -7,46 +7,6 @@ import Filter from './components/Filter/Filter';
 import Playlist from './components/Playlist/Playlist';
 import './App.css';
 
-let fakeServerData = {
-  user: {
-    name: 'David',
-    playlists: [
-      {
-        name: 'My favorites',
-        songs: [
-          { name: 'Beat It', duration: 1345 },
-          { name: 'Cannelloni Makaroni', duration: 1236 },
-          { name: 'Loved to death', duration: 70000 }
-        ]
-      },
-      {
-        name: 'Discover Weekly',
-        songs: [
-          { name: 'Beat It', duration: 1345 },
-          { name: 'Bad Boys', duration: 1236 },
-          { name: 'Rosa helikopter', duration: 70000 }
-        ]
-      },
-      {
-        name: 'Another playlist - the best!',
-        songs: [
-          { name: 'Beat It', duration: 1345 },
-          { name: 'Cannelloni Makaroni', duration: 1236 },
-          { name: 'Jukebox Hero', duration: 70000 }
-        ]
-      },
-      {
-        name: 'Playlist - yeah!',
-        songs: [
-          { name: 'Vampires', duration: 1345 },
-          { name: 'Cannelloni Makaroni', duration: 1236 },
-          { name: 'Rosa helikopter', duration: 70000 }
-        ]
-      }
-    ]
-  }
-};
-
 class App extends Component {
   constructor(props) {
     super(props);
