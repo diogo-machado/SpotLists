@@ -79,8 +79,10 @@ class App extends Component {
         {this.state.user ? (
           <div>
             <h1>{this.state.user.name}'s Playlist</h1>
-            <PlaylistCounter playlists={playlistsToRender} />
-            <HoursCounter playlists={playlistsToRender} />
+            <div className="counters">
+              <PlaylistCounter playlists={playlistsToRender} />
+              <HoursCounter playlists={playlistsToRender} />
+            </div>
             <Filter onTextChange={text => this.setState({ filterString: text })} />
             {playlistsToRender.map((playlist, index) => (
               <Playlist key={index} playlist={playlist} />

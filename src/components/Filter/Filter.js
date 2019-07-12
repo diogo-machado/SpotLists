@@ -1,12 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-export default class Filter extends Component {
-  render() {
-    return (
-      <div>
-        <img src="" alt="" />
-        <input type="text" onChange={e => this.props.onTextChange(e.target.value)} />
-      </div>
-    );
-  }
+export default function Filter(props) {
+  return (
+    <div>
+      <input type="text" onChange={e => props.onTextChange(e.target.value)} />
+    </div>
+  );
 }

@@ -37,3 +37,10 @@ h1 {
   font-size: 54px;
   color: #000;
 }
+
+.counters {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  color: #000;
+}
