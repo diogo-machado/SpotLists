@@ -84,9 +84,11 @@ class App extends Component {
               <HoursCounter playlists={playlistsToRender} />
             </div>
             <Filter onTextChange={text => this.setState({ filterString: text })} />
-            {playlistsToRender.map((playlist, index) => (
-              <Playlist key={index} playlist={playlist} />
-            ))}
+            <div className="listsDisplay">
+              {playlistsToRender.map((playlist, index) => (
+                <Playlist key={index} playlist={playlist} />
+              ))}
+            </div>
           </div>
         ) : (
           <button
